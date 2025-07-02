@@ -1,25 +1,29 @@
-name: Build and Push Docker image
+name: Build and Push Docker image # Nome do workflow que aparecerá no GitHub Actions
 
 on:
   push:
-    branches: [main, master]
+    branches: [main, master]      # O workflow será executado quando houver push nos branches main ou master
 
 jobs:
   build:
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-latest        # O job será executado em uma máquina virtual Ubuntu
+
     steps:
       - name: Checkout code
-        uses: actions/checkout@v3
+        uses: actions/checkout@v3 # Faz o checkout do código do repositório
+
       - name: Set up Docker Buildx
-        uses: docker/setup-buildx-action@v3
+        uses: docker/setup-buildx-action@v3 # Prepara o ambiente para builds avançados de Docker
+
       - name: Login to DockerHub
         uses: docker/login-action@v3
         with:
-          username: ${{ secrets.DOCKERHUB_USERNAME }}
-          password: ${{ secrets.DOCKERHUB_TOKEN }}
+          username: ${{ secrets.DOCKERHUB_USERNAME }} # Usa o secret DOCKERHUB_USERNAME como usuário do Docker Hub
+          password: ${{ secrets.DOCKERHUB_TOKEN }}    # Usa o secret DOCKERHUB_TOKEN como senha/token do Docker Hub
+
       - name: Build and push
         uses: docker/build-push-action@v5
         with:
-          context: .
-          push: true
-          tags: ${{ secrets.DOCKERHUB_USERNAME }}/taskmanager-frontend:latest 
+          context: .                                 # Contexto do build (diretório atual)
+          push: true                                 # Faz o push da imagem para o Docker Hub
+          tags: americogodoydocker/taskmanager-frontend:latest # Nome e tag da imagem (no frontend) 
