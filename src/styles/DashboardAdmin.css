@@ -1,0 +1,335 @@
+/* Variáveis de cores */
+:root {
+  --sidebar-bg: #1a237e;
+  --sidebar-hover: #283593;
+  --sidebar-active: #3949ab;
+  --sidebar-text: #ffffff;
+  --sidebar-text-hover: #e8eaf6;
+  --transition-speed: 0.3s;
+}
+
+/* Layout principal */
+.admin-page {
+  display: flex;
+  min-height: 100vh;
+  background-color: #f5f6fa;
+}
+
+/* Sidebar moderna */
+.sidebar {
+  width: 250px;
+  background: var(--sidebar-bg);
+  color: var(--sidebar-text);
+  padding: 2rem 0;
+  box-shadow: 4px 0 10px rgba(0, 0, 0, 0.1);
+  position: fixed;
+  height: 100vh;
+  transition: all var(--transition-speed) ease;
+}
+
+.sidebar nav {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  padding: 0 1.5rem;
+  position: relative;
+}
+
+.sidebar ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.sidebar li {
+  margin-bottom: 0.5rem;
+}
+
+.sidebar li.menu-title {
+  font-size: 1.2rem;
+  font-weight: 600;
+  color: var(--sidebar-text);
+  padding: 0.5rem 1rem;
+  margin-bottom: 2rem;
+  position: relative;
+}
+
+.sidebar li.menu-title::after {
+  content: '';
+  position: absolute;
+  bottom: -0.5rem;
+  left: 1rem;
+  width: 50px;
+  height: 2px;
+  background-color: var(--sidebar-text-hover);
+  border-radius: 2px;
+}
+
+.sidebar a {
+  display: flex;
+  align-items: center;
+  color: var(--sidebar-text);
+  text-decoration: none;
+  padding: 0.8rem 1rem;
+  border-radius: 8px;
+  transition: all var(--transition-speed) ease;
+  font-weight: 500;
+  position: relative;
+  overflow: hidden;
+}
+
+.sidebar a::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 0;
+  height: 100%;
+  width: 0;
+  background-color: var(--sidebar-hover);
+  z-index: 0;
+  transition: width var(--transition-speed) ease;
+}
+
+.sidebar a:hover::before {
+  width: 100%;
+}
+
+.sidebar a span {
+  position: relative;
+  z-index: 1;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.sidebar a svg {
+  font-size: 1.2rem;
+  min-width: 20px;
+}
+
+.sidebar a:hover {
+  color: var(--sidebar-text-hover);
+  transform: translateX(5px);
+}
+
+.sidebar a:hover svg {
+  transform: scale(1.1);
+  transition: transform var(--transition-speed) ease;
+}
+
+.sidebar a.active {
+  background-color: var(--sidebar-active);
+  color: var(--sidebar-text-hover);
+}
+
+.sidebar a.active svg {
+  color: var(--sidebar-text-hover);
+}
+
+.sidebar-bottom {
+  position: absolute;
+  bottom: 100px;
+  left: 0;
+  width: 100%;
+  padding: 0 1.5rem;
+}
+
+.logout-button {
+  width: 100%;
+  background: none;
+  border: none;
+  color: var(--sidebar-text);
+  font-size: 1rem;
+  cursor: pointer;
+  padding: 0.8rem 1rem;
+  border-radius: 8px;
+  transition: all var(--transition-speed) ease;
+  text-align: left;
+  display: flex;
+  align-items: center;
+  position: relative;
+  overflow: hidden;
+}
+
+.logout-button::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 0;
+  height: 100%;
+  width: 0;
+  background-color: rgba(255, 255, 255, 0.1);
+  z-index: 0;
+  transition: width var(--transition-speed) ease;
+}
+
+.logout-button:hover::before {
+  width: 100%;
+}
+
+.logout-button span {
+  position: relative;
+  z-index: 1;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.logout-button svg {
+  font-size: 1.2rem;
+  min-width: 20px;
+}
+
+.logout-button:hover {
+  color: var(--sidebar-text-hover);
+  transform: translateX(5px);
+}
+
+.logout-button:hover svg {
+  transform: scale(1.1);
+  transition: transform var(--transition-speed) ease;
+}
+
+/* Conteúdo principal */
+.dashboard-container {
+  flex: 1;
+  padding: 2rem;
+  margin-left: 250px;
+}
+
+/* Responsividade */
+@media (max-width: 768px) {
+  .sidebar {
+    width: 200px;
+    transform: translateX(-100%);
+  }
+
+  .sidebar.open {
+    transform: translateX(0);
+  }
+
+  .dashboard-container {
+    margin-left: 0;
+  }
+}
+
+.dashboard-title {
+  font-size: 2rem;
+  margin-bottom: 1.5rem;
+}
+
+.dashboard-actions {
+  margin-bottom: 1.5rem;
+}
+
+.btn-create {
+  background-color: #007bff;
+  color: white;
+  padding: 0.5rem 1rem;
+  text-decoration: none;
+  border-radius: 5px;
+}
+
+.btn-create:hover {
+  background-color: #0056b3;
+}
+
+.metrics {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 2rem;
+}
+
+.metric {
+  background-color: #fff;
+  padding: 1rem;
+  border-radius: 8px;
+  box-shadow: 0px 2px 10px rgba(0, 0, 0, 0.1);
+  width: 30%;
+}
+
+.metric-title {
+  font-weight: bold;
+  margin-bottom: 0.5rem;
+}
+
+.metric-value {
+  font-size: 1.5rem;
+  color: #007bff;
+}
+
+.teams-list {
+  margin-top: 2rem;
+}
+
+.team-item {
+  background-color: #fff;
+  padding: 1rem;
+  margin-bottom: 1rem;
+  border-radius: 8px;
+  box-shadow: 0px 2px 10px rgba(0, 0, 0, 0.1);
+}
+
+.actions {
+  display: flex;
+  justify-content: flex-end;
+}
+
+.btn-edit,
+.btn-delete {
+  padding: 0.5rem 1rem;
+  margin-left: 0.5rem;
+  border-radius: 5px;
+  border: none;
+  cursor: pointer;
+}
+
+.btn-edit {
+  background-color: #28a745;
+  color: white;
+}
+
+.btn-edit:hover {
+  background-color: #218838;
+}
+
+.btn-delete {
+  background-color: #dc3545;
+  color: white;
+}
+
+.btn-delete:hover {
+  background-color: #c82333;
+}
+
+.team-members {
+  margin: 10px 0;
+  padding: 10px;
+  background-color: #ffffff;
+  border-radius: 5px;
+}
+
+.team-members h4 {
+  color: #2c3e50;
+  margin-bottom: 8px;
+  font-size: 1.1rem;
+  font-weight: 700;
+}
+
+.team-members ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.team-members li {
+  padding: 4px 0;
+  color: #34495e;
+  font-size: 1rem;
+  font-weight: 600;
+}
+
+
+
+
+

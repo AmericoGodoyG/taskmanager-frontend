@@ -1,0 +1,118 @@
+.admin-page {
+  display: flex;
+  min-height: 100vh;
+}
+
+.dashboard-geral {
+  flex: 1;
+  padding: 30px;
+  margin-left: 250px; /* Adiciona margem igual à largura do sidebar */
+  width: calc(100% - 250px); /* Ajusta a largura considerando o sidebar */
+}
+
+.cards-container {
+  display: flex;
+  justify-content: flex-start; /* Alinha cards à esquerda */
+  gap: 20px;
+  margin-bottom: 30px;
+  flex-wrap: wrap; /* Permite quebra de linha em telas menores */
+}
+
+.card {
+  width: 200px; /* Aumenta um pouco a largura dos cards */
+  height: 120px;
+  border-radius: 10px;
+  color: white;
+  padding: 15px;
+  text-align: center;
+  font-weight: bold;
+  font-size: 1rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  transition: transform 0.3s ease;
+}
+
+.card:hover {
+  transform: translateY(-5px);
+}
+
+.card.cyan {
+  background-color: #00d48d;
+}
+
+.card.purple {
+  background-color: #9c27b0;
+}
+
+.lista-tarefas {
+  margin-top: 30px;
+}
+
+.lista-tarefas h3 {
+  margin-bottom: 20px;
+  color: #2c3e50;
+  font-size: 1.5rem;
+}
+
+.lista-tarefas .tarefa-item {
+  border: 1px solid #ddd;
+  padding: 15px;
+  margin-bottom: 15px;
+  border-radius: 8px;
+  background-color: #ffffff;
+  font-size: 0.95rem;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+  transition: transform 0.3s ease;
+}
+
+.lista-tarefas .tarefa-item:hover {
+  transform: translateY(-2px);
+}
+
+.status-indicator-bar {
+  height: 8px;
+  border-radius: 4px;
+  margin-top: 8px;
+  margin-bottom: 8px;
+  transition: background-color 0.3s ease;
+}
+
+.graficos-container {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 20px;
+  margin: 20px 0;
+}
+
+.grafico-card {
+  background-color: white;
+  padding: 20px;
+  border-radius: 8px;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+}
+
+.grafico-card h3 {
+  text-align: center;
+  margin-bottom: 15px;
+  color: #2c3e50;
+}
+
+/* Responsividade */
+@media (max-width: 768px) {
+  .dashboard-geral {
+    margin-left: 0;
+    width: 100%;
+  }
+
+  .cards-container {
+    justify-content: center;
+  }
+
+  .card {
+    width: calc(50% - 20px);
+    min-width: 150px;
+  }
+}
+
